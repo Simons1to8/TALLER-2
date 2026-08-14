@@ -7,6 +7,10 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public Rigidbody2D rb;
 
+    public float jumpForce;
+    public Transform groundCheck;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
