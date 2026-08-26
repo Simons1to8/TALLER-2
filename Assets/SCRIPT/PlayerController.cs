@@ -15,23 +15,41 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float GroundCheckRadius;
     [SerializeField] private LayerMask GroundLayer;
 
+    public Animator playerAnimator;
+    public bool isFacingRight;
     public GameObject Key;
     public GameObject Door;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    { 
+    {
+        playerAnimator = GetComponent<Animator>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
-        canJump = Physics2D.OverlapCircle(GroundCheck.position,GroundCheckRadius,GroundLayer);
+        canJump = Physics2D.OverlapCircle(GroundCheck.position, GroundCheckRadius, GroundLayer);
 
 
-      rb.linearVelocity=new Vector2(direction*speed, rb.linearVelocityY);
-      //rb.AddForceX(direction * speed);
+        rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocityY);
+        //rb.AddForceX(direction * speed);
+
+        
+        if (!isFacingRight && direction > 0f)
+        {
+            Flip ();
+        }
+        else if (isFacingRight && direction < 0f)
+
+        {
+            Flip ();
+        }
+
+        playerAnimator.SetFloat("Direction",direction); 
+    
     }
+    
 
     public void Move(InputAction.CallbackContext context)
     {
@@ -61,5 +79,15 @@ public class PlayerController : MonoBehaviour
           
 
         }
+    }
+
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+
+        Vector3 localScale=transform.localScale;
+        localScale.x*= -1;
+        transform.localScale = localScale;
+
     }
 }

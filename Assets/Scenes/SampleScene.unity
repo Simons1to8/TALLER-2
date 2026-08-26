@@ -547,8 +547,8 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.22, y: -0.07, z: -10}
+  m_LocalScale: {x: 0.5105629, y: 0.24251737, z: 0.5105629}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1259,9 +1259,9 @@ BoxCollider2D:
   m_Offset: {x: -0.01067102, y: -0.0655821}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.33}
+    pivot: {x: 0.5, y: 0.32}
     oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 1, y: 2}
+    newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1380,6 +1380,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1904446513}
     - target: {fileID: 1419462374537164107, guid: c381a0217eb6a6f4e9e563371aad9392, type: 3}
+      propertyPath: isFacingRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419462374537164107, guid: c381a0217eb6a6f4e9e563371aad9392, type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419462374537164107, guid: c381a0217eb6a6f4e9e563371aad9392, type: 3}
       propertyPath: GroundCheckRadius
       value: 0.2
       objectReference: {fileID: 0}
@@ -1463,6 +1471,14 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: b871af2e5c12eeb4fbd5c39e38180a50, type: 2}
+    - target: {fileID: 5037418027880787373, guid: c381a0217eb6a6f4e9e563371aad9392, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037418027880787373, guid: c381a0217eb6a6f4e9e563371aad9392, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
     - target: {fileID: 5037418027880787373, guid: c381a0217eb6a6f4e9e563371aad9392, type: 3}
       propertyPath: m_Sprite
       value: 
