@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
             Flip ();
         }
 
-        playerAnimator.SetFloat("Direction",direction); 
+        playerAnimator.SetFloat("Direction", direction); 
     
     }
     
@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Copa")){
             collision.gameObject.SetActive(false);
           
+
 
         }
     }
