@@ -32,8 +32,8 @@ public class PlayerController : MonoBehaviour
         canJump = Physics2D.OverlapCircle(GroundCheck.position, GroundCheckRadius, GroundLayer);
 
 
-        //rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocityY);
-        rb.AddForceX(direction * speed);
+        rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocityY);
+        //rb.AddForceX(direction * speed);
 
         
         if (!isFacingRight && direction > 0f)
@@ -68,6 +68,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Key"))
+        {
+            collision.gameObject.SetActive(false);
+            Door.SetActive(false);
+        }
+
+
+
+
         if (collision.gameObject.CompareTag("Key")){
 
             collision.gameObject.SetActive(false);
