@@ -21,6 +21,7 @@ public class EnemyController : MonoBehaviour
         enemyRb = GetComponent<Rigidbody2D>();
         actualObjective = enemyMovementPoints[0];
         isFacingRight = true;
+        enemyAnimator = GetComponent<Animator>();   
     }
 
     // Update is called once per frame
@@ -33,11 +34,13 @@ public class EnemyController : MonoBehaviour
             if (actualObjective == enemyMovementPoints[0])
             {
                 actualObjective = enemyMovementPoints[1];
+               // directionMov = 1;
 
             }
             else if (actualObjective == enemyMovementPoints[1])
             {
                 actualObjective = enemyMovementPoints[0];
+                //directionMov = -1;
             }
         }
 
@@ -51,11 +54,11 @@ public class EnemyController : MonoBehaviour
         movement = new Vector2(roundDirection, 0);
 
 
-        if (!isFacingRight && directionMov > 0f)
+        if (!isFacingRight && roundDirection > 0f)
         {
             Flip();
         }
-        else if (isFacingRight && directionMov < 0f)
+        else if (isFacingRight && roundDirection < 0f)
 
         {
             Flip();
@@ -70,6 +73,7 @@ public class EnemyController : MonoBehaviour
 
     private void Flip()
     {
+        
         isFacingRight = !isFacingRight;
 
         Vector3 localScale = transform.localScale;
