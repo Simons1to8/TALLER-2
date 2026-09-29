@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+   
     public float directionMov;
     Vector2 movement;
     public float enemySpeed;
@@ -14,6 +15,9 @@ public class EnemyController : MonoBehaviour
     public Animator enemyAnimator;
 
     public bool isFacingRight;
+
+    [SerializeField]private float enemyDamage;
+    [SerializeField] private float enemyStrength;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -80,6 +84,31 @@ public class EnemyController : MonoBehaviour
         localScale.x *= -1;
         transform.localScale = localScale;
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (collision.gameObject.GetComponent<PlayerController>() != null) 
+        {
+            PlayerController player=collision.gameObject.GetComponent<PlayerController>();
+
+            player.TakeDamage(enemyDamage);
+            player.hittime=0.5f;
+            player.hitforce=enemyStrength;
+
+            if (collision.transform.position.x < transform.position.x)
+            {
+                player.hitfromright = true;
+            }
+            else if(collision.transform.position.x>transform.position.x)
+            {
+                player.hitfromright = false;
+            }
+            enemyAnimator.SetTrigger("IsAttacking");
+
+        }
+        
     }
 
 }

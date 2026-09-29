@@ -22,6 +22,13 @@ public class PlayerController : MonoBehaviour
     public GameObject Key;
     public GameObject Door;
 
+    public float health;
+    private float maxhealth;
+
+    public float hitforce;
+    public float hittime;
+    public bool hitfromright;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,9 +40,32 @@ public class PlayerController : MonoBehaviour
     {
         canJump = Physics2D.OverlapCircle(GroundCheck.position, GroundCheckRadius, GroundLayer);
 
+        if (hittime <= 0)
+        {
+            rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocityY);
+            //rb.AddForceX(direction * speed);
+            playerAnimator.SetFloat("Direction", direction);
+        }
+        else
+        {
+            if (hitfromright)
+            {
+                rb.AddForce(new Vector2(-hitforce, hitforce),ForceMode2D.Impulse);
+            }
+            else if (!hitfromright) 
+            {
+                rb.AddForce(new Vector2(hitforce, hitforce),ForceMode2D.Impulse);
 
-        rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocityY);
-        //rb.AddForceX(direction * speed);
+            }
+            
+            hittime-= Time.deltaTime;
+
+            
+        }
+
+
+        
+
 
         
         if (!isFacingRight && direction > 0f)
@@ -48,7 +78,7 @@ public class PlayerController : MonoBehaviour
             Flip ();
         }
 
-        playerAnimator.SetFloat("Direction", direction); 
+        
     
     }
     
@@ -74,6 +104,8 @@ public class PlayerController : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             Door.SetActive(false);
+
+            
         }
 
 
@@ -101,5 +133,10 @@ public class PlayerController : MonoBehaviour
         localScale.x*= -1;
         transform.localScale = localScale;
 
+    }
+
+    public void TakeDamage(float damage) 
+    {
+        health-=damage;
     }
 }
