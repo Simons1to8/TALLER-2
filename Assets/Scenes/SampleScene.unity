@@ -1105,11 +1105,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1299562252 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6039188219670414966, guid: 5d2b868eb7118a74598af78e2a4dab36, type: 3}
-  m_PrefabInstance: {fileID: 5294537798176217366}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1299562253 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4360222747283082658, guid: 5d2b868eb7118a74598af78e2a4dab36, type: 3}
@@ -1831,6 +1826,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2044917309}
     - target: {fileID: 7397358366028644478, guid: 5d2b868eb7118a74598af78e2a4dab36, type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397358366028644478, guid: 5d2b868eb7118a74598af78e2a4dab36, type: 3}
       propertyPath: playerAnimator
       value: 
       objectReference: {fileID: 1299562253}
@@ -1863,7 +1862,7 @@ Transform:
   m_GameObject: {fileID: 983952389155227267}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.12, y: -3.13, z: 0}
+  m_LocalPosition: {x: 4.44, y: -1.49, z: 0}
   m_LocalScale: {x: 0.37132546, y: 0.39371604, z: 0.14213413}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1907,7 +1906,7 @@ BoxCollider2D:
   m_Offset: {x: -0.01067102, y: -0.0655821}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.32}
+    pivot: {x: 0.5, y: 0.3}
     oldSize: {x: 5.12, y: 5.12}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
@@ -1932,12 +1931,14 @@ MonoBehaviour:
   enemySpeed: 3
   enemyRb: {fileID: 3296695827210450869}
   detectionRadius: 0.5
-  actualObjective: {fileID: 1299562252}
+  actualObjective: {fileID: 0}
   enemyMovementPoints:
   - {fileID: 116354973}
   - {fileID: 280145743}
-  enemyAnimator: {fileID: 3935380519956257628}
+  enemyAnimator: {fileID: 0}
   isFacingRight: 1
+  enemyDamage: 10
+  enemyStrength: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
