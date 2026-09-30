@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Door;
 
     public float health;
-    private float maxhealth;
+    public float maxhealth;
 
     public float hitforce;
     public float hittime;
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerAnimator = GetComponent<Animator>(); 
-    }
+    } 
 
     // Update is called once per frame
     void Update()
@@ -50,11 +50,11 @@ public class PlayerController : MonoBehaviour
         {
             if (hitfromright)
             {
-                rb.AddForce(new Vector2(-hitforce, hitforce),ForceMode2D.Impulse);
+                rb.linearVelocity=(new Vector2(-hitforce, hitforce));
             }
             else if (!hitfromright) 
             {
-                rb.AddForce(new Vector2(hitforce, hitforce),ForceMode2D.Impulse);
+                rb.linearVelocity=(new Vector2(hitforce, hitforce));
 
             }
             
