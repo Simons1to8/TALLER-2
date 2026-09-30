@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 
 
+
 public class PlayerController : MonoBehaviour
 {
     public float direction;
@@ -28,6 +29,9 @@ public class PlayerController : MonoBehaviour
     public float hitforce;
     public float hittime;
     public bool hitfromright;
+
+    [SerializeField] ParticleSystem damagePS;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -138,5 +142,15 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage) 
     {
         health-=damage;
+        
     }
+
+    public void TakeDamage() 
+    {
+        damagePS.Play();
+
+    }
+
+
+
 }
