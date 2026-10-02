@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void TakeDamage() 
+    public void TakeDamage()
     {
         damagePS.Play();
 
