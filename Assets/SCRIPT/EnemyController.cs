@@ -1,9 +1,7 @@
 using UnityEngine;
-using Unity.Cinemachine;
 
 public class EnemyController : MonoBehaviour
 {
-
     public float directionMov;
     Vector2 movement;
     public float enemySpeed;
@@ -20,7 +18,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float enemyDamage;
     [SerializeField] private float enemyStrength;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         enemyRb = GetComponent<Rigidbody2D>();
@@ -29,7 +26,6 @@ public class EnemyController : MonoBehaviour
         enemyAnimator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float distanceToObjective = Vector2.Distance(transform.position, actualObjective.position);
@@ -39,13 +35,10 @@ public class EnemyController : MonoBehaviour
             if (actualObjective == enemyMovementPoints[0])
             {
                 actualObjective = enemyMovementPoints[1];
-                // directionMov = 1;
-
             }
             else if (actualObjective == enemyMovementPoints[1])
             {
                 actualObjective = enemyMovementPoints[0];
-                //directionMov = -1;
             }
         }
 
@@ -53,47 +46,38 @@ public class EnemyController : MonoBehaviour
 
         int roundDirection = Mathf.RoundToInt(direction.x);
 
-
-
-
         movement = new Vector2(roundDirection, 0);
-
 
         if (!isFacingRight && roundDirection > 0f)
         {
             Flip();
         }
         else if (isFacingRight && roundDirection < 0f)
-
         {
             Flip();
         }
 
-
         enemyAnimator.SetFloat("Direction", roundDirection);
-
 
         enemyRb.MovePosition(enemyRb.position + movement * enemySpeed * Time.deltaTime);
     }
 
     private void Flip()
     {
-
         isFacingRight = !isFacingRight;
 
         Vector3 localScale = transform.localScale;
         localScale.x *= -1;
         transform.localScale = localScale;
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        PlayerController player = collision.gameObject.GetComponentInParent<PlayerController>();
-
-        if (player != null)
+        if (collision.gameObject.GetComponent<PlayerController>() != null)
         {
-            player.TakeDamage(enemyDamage);
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+
+            
             player.hittime = 0.5f;
             player.hitforce = enemyStrength;
 
@@ -107,12 +91,6 @@ public class EnemyController : MonoBehaviour
             }
 
             enemyAnimator.SetTrigger("IsAttacking");
-
-            // Disparo de impulso compatible con Cinemachine 3.x
-            if (GetComponent<CinemachineImpulseSource>() != null)
-            {
-                GetComponent<CinemachineImpulseSource>().GenerateImpulse(new Vector3(1f, 1f, 0f));
-            }
         }
     }
 }
