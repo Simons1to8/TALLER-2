@@ -1,8 +1,9 @@
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class EnemyController : MonoBehaviour
 {
-   
+
     public float directionMov;
     Vector2 movement;
     public float enemySpeed;
@@ -16,7 +17,7 @@ public class EnemyController : MonoBehaviour
 
     public bool isFacingRight;
 
-    [SerializeField]private float enemyDamage;
+    [SerializeField] private float enemyDamage;
     [SerializeField] private float enemyStrength;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,7 +26,7 @@ public class EnemyController : MonoBehaviour
         enemyRb = GetComponent<Rigidbody2D>();
         actualObjective = enemyMovementPoints[0];
         isFacingRight = true;
-        enemyAnimator = GetComponent<Animator>();   
+        enemyAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -38,7 +39,7 @@ public class EnemyController : MonoBehaviour
             if (actualObjective == enemyMovementPoints[0])
             {
                 actualObjective = enemyMovementPoints[1];
-               // directionMov = 1;
+                // directionMov = 1;
 
             }
             else if (actualObjective == enemyMovementPoints[1])
@@ -77,7 +78,7 @@ public class EnemyController : MonoBehaviour
 
     private void Flip()
     {
-        
+
         isFacingRight = !isFacingRight;
 
         Vector3 localScale = transform.localScale;
@@ -88,27 +89,30 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        PlayerController player = collision.gameObject.GetComponentInParent<PlayerController>();
 
-        if (collision.gameObject.GetComponent<PlayerController>() != null) 
+        if (player != null)
         {
-            PlayerController player=collision.gameObject.GetComponent<PlayerController>();
-
             player.TakeDamage(enemyDamage);
-            player.hittime=0.5f;
-            player.hitforce=enemyStrength;
+            player.hittime = 0.5f;
+            player.hitforce = enemyStrength;
 
             if (collision.transform.position.x < transform.position.x)
             {
                 player.hitfromright = true;
             }
-            else if(collision.transform.position.x>transform.position.x)
+            else if (collision.transform.position.x > transform.position.x)
             {
                 player.hitfromright = false;
             }
+
             enemyAnimator.SetTrigger("IsAttacking");
 
+            // Disparo de impulso compatible con Cinemachine 3.x
+            if (GetComponent<CinemachineImpulseSource>() != null)
+            {
+                GetComponent<CinemachineImpulseSource>().GenerateImpulse(new Vector3(1f, 1f, 0f));
+            }
         }
-        
     }
-
 }

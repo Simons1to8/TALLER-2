@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-   playerAnimator.SetBool("isJumping", !canJump);
+  
 
     private void Flip()
     {
@@ -115,11 +115,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void TakeDamage(float damage) 
-    {
-        health-=damage;
-        
-    }
+    
 
     public void TakeDamage()
     {
