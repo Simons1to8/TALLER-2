@@ -456,7 +456,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.013332, y: 24.926668, z: -14.34}
+  m_LocalPosition: {x: 17.16745, y: 24.92804, z: -14.34}
   m_LocalScale: {x: 0.5105629, y: 0.24251737, z: 0.5105629}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -861,7 +861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineConfiner2D
-  BoundingShape2D: {fileID: 0}
+  BoundingShape2D: {fileID: 1870684079}
   Damping: 0
   SlowingDistance: 0
   OversizeWindow:
@@ -1357,7 +1357,7 @@ Transform:
   m_GameObject: {fileID: 1870684077}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.51, y: 23.63, z: 0}
+  m_LocalPosition: {x: 18.3, y: 24.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1411,9 +1411,10 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 40.408375, y: 4.956152}
       - {x: -6.58241, y: 4.746601}
-      - {x: -6.557527, y: -6.4009285}
-      - {x: 1.4945828, y: -6.4009285}
-      - {x: 40.422997, y: -6.390087}
+      - {x: -6.28655, y: -5.768654}
+      - {x: 1.5849091, y: -5.76865}
+      - {x: 16.910841, y: -5.583832}
+      - {x: 39.13172, y: -5.3335876}
   m_UseDelaunayMesh: 0
 --- !u!114 &1889071662 stripped
 MonoBehaviour:
@@ -2838,7 +2839,7 @@ ParticleSystem:
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0
-        m_PreInfinity: 2
+        m_PreInfinity: 1
         m_PostInfinity: 2
         m_RotationOrder: 4
       minCurve:
@@ -30428,7 +30429,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6039188219670414966, guid: 5d2b868eb7118a74598af78e2a4dab36, type: 3}
-      insertIndex: 0
+      insertIndex: -1
       addedObject: {fileID: 2072184644}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d2b868eb7118a74598af78e2a4dab36, type: 3}
@@ -30456,7 +30457,7 @@ Transform:
   m_GameObject: {fileID: 983952389155227267}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.792, y: 20.831001, z: -4.04}
+  m_LocalPosition: {x: 25.29, y: 21.2, z: -4.04}
   m_LocalScale: {x: 0.8193296, y: 0.8687345, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:

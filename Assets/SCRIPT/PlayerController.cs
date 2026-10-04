@@ -43,7 +43,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         canJump = Physics2D.OverlapCircle(GroundCheck.position, GroundCheckRadius, GroundLayer);
-
+        
+        
         if (hittime <= 0)
         {
             rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocityY);
@@ -102,32 +103,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Key"))
-        {
-            collision.gameObject.SetActive(false);
-            Door.SetActive(false);
-
-            
-        }
-
-
-
-
-        if (collision.gameObject.CompareTag("Key")){
-
-            collision.gameObject.SetActive(false);
-            Door.SetActive(false);
-        }
-
-        if (collision.gameObject.CompareTag("Copa")){
-            collision.gameObject.SetActive(false);
-          
-
-
-        }
-    }
+   playerAnimator.SetBool("isJumping", !canJump);
 
     private void Flip()
     {
